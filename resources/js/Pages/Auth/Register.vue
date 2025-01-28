@@ -7,8 +7,10 @@ import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
 const form = useForm({
-    name: '',
+    firstname: '',
+    lastname: '',
     email: '',
+    phone_nb: '',
     password: '',
     password_confirmation: '',
 });
@@ -26,23 +28,39 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="firstname" value="First Name" required/>
 
                 <TextInput
-                    id="name"
+                    id="firstname"
                     type="text"
                     class="mt-1 block w-full"
-                    v-model="form.name"
+                    v-model="form.firstname"
                     required
                     autofocus
-                    autocomplete="name"
+                    autocomplete="Frist name"
                 />
 
-                <InputError class="mt-2" :message="form.errors.name" />
+                <InputError class="mt-2" :message="form.errors.firstname" />
             </div>
 
             <div class="mt-4">
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="name" value="Last Name" required/>
+
+                <TextInput
+                    id="lastname"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.lastname"
+                    required
+                    autofocus
+                    autocomplete="Last name"
+                />
+
+                <InputError class="mt-2" :message="form.errors.lastname" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="email" value="Email" required/>
 
                 <TextInput
                     id="email"
@@ -57,7 +75,21 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="phone_nb" value="Phone Number" />
+
+                <TextInput
+                    id="phone_nb"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.phone_nb"
+                    autocomplete="phone_nb"
+                />
+
+                <InputError class="mt-2" :message="form.errors.phone_nb" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="password" value="Password" required/>
 
                 <TextInput
                     id="password"
@@ -75,6 +107,7 @@ const submit = () => {
                 <InputLabel
                     for="password_confirmation"
                     value="Confirm Password"
+                    required
                 />
 
                 <TextInput
